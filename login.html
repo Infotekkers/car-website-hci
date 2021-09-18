@@ -29,7 +29,7 @@
       .slideshow {
         display: flex;
         background: mediumpurple;
-        overflow-x: hidden;
+        overflow: hidden;
 
         position: relative;
       }
@@ -40,6 +40,16 @@
         object-position: center;
 
         filter: grayscale() brightness(110%);
+        animation: scale-up 3s cubic-bezier(.32,-0.77,.87,.2);
+      }
+
+      @keyframes scale-up {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.1);
+        }
       }
 
       .slideshow::before,
