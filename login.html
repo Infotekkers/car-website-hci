@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login ─ Infotekkers Car Rental</title>
+
+    <!-- Normalize CSS RESET -->
+    <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      .grid-container {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: 60% 40%;
+
+        /* filter: grayscale(); */
+      }
+
+      .slideshow {
+        display: flex;
+        background: mediumpurple;
+        overflow-x: hidden;
+
+        position: relative;
+      }
+
+      .slideshow img {
+        max-width: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        filter: grayscale() brightness(110%);
+      }
+
+      .slideshow::before,
+      .slideshow::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        z-index: 1;
+      }
+
+      .slideshow::after {
+        background: deeppink;
+        mix-blend-mode: multiply;
+      }
+
+      .slideshow::before {
+        background: navy;
+        mix-blend-mode: lighten;
+      }
+
+      .slideshow__progress {
+        position: absolute;
+        left: 50%;
+        bottom: 10%;
+        transform: translateX(-50%);
+
+        z-index: 2;
+        width: 300px;
+        height: 10px;
+        border-radius: 5px;
+        border: white solid 2px;
+      }
+
+      .slideshow__progress::after {
+        content: "";
+        background: white;
+        width: inherit;
+        height: inherit;
+        display: block;
+        border-radius: inherit;
+        animation: fill-space 2s linear infinite;
+      }
+
+      @keyframes fill-space {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      /* 
+        ***
+        ***
+        ***
+        ***
+        ***
+        ***
+        ***
+        **************
+        **************
+      */
+
+      .login-form {
+        background: black;
+        padding: 4rem 6rem;
+      }
+
+      h1 {
+        font-size: 4rem;
+        color: white;
+      }
+
+      input,
+      button {
+        width: 100%;
+        padding: 1rem;
+      }
+
+      input:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="grid-container">
+        <div class="slideshow">
+          <img src="./assets/images/Alfa Romeo 2000 GT Veloce.jpg" alt="" />
+          <img src="./assets/images/AMC Javelin AMX.jpg" alt="" />
+          <img src="./assets/images/Aston Martin DB10.jpg" alt="" />
+          <img src="./assets/images/Buick Gran Sport 400.jpg" alt="" />
+          <img
+            src="./assets/images/Audi R8 Coupé 4.2 FSI quattro (Typ 42) (Gen1).jpg"
+            alt=""
+          />
+
+          <div class="slideshow__progress"></div>
+        </div>
+        <div class="login-form">
+          <h1>Welcome Back!</h1>
+          <form action="">
+            <input name="email" type="text" placeholder="Email" />
+            <input name="password" type="text" placeholder="Password" />
+          </form>
+
+          <button type="submit">Login</button>
+          <button type="button">Register</button>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      var i;
+      var slides = document.querySelectorAll(".slideshow img");
+
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+  </script>
+</html>
